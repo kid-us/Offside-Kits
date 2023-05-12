@@ -1,0 +1,38 @@
+body {
+  font-family: "Grape Nuts", cursive;
+  font-size: large;
+  background-color: rgb(230, 230, 230);
+}
+
+.hidden {
+  display: none;
+}
+
+.form-control-plaintext {
+  border-bottom: 0.5px solid #000;
+  outline: 0;
+}
+
+.btns {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.active:hover {
+  color: #fff;
+}
+
+input::placeholder {
+  color: #6a1b9a;
+  font-weight: bold;
+}
+
+form {
+  margin: 0 20%;
+  height: 430px;
+  width: 600px;
+}

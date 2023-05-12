@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
+
+body {
+  background-color: #eeecec;
+  color: #000;
+  font-weight: bolder;
+  font-size: large;
+  font-family: "Grape Nuts", cursive;
+  /* font-family: "Inconsolata", monospace; */
+  font-weight: lighter;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(153, 146, 146);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(22, 37, 51);
+}
+
+a {
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.list {
+  list-style: none;
+  display: inline;
+}
+
+.allow {
+  cursor: pointer;
+}
+
+.not-allow {
+  cursor: not-allowed;
+}

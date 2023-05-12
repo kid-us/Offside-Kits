@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
+
+body {
+  background-color: #eeecec;
+  color: #000;
+  font-weight: bolder;
+  font-size: large;
+  font-family: "Grape Nuts", cursive;
+  /* font-family: "Inconsolata", monospace; */
+  font-weight: lighter;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(153, 146, 146);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(22, 37, 51);
+}
+
+li {
+  list-style: none;
+  display: inline;
+}
+
+.menu {
+  list-style: none;
+  display: block;
+  text-align: right;
+}
+
+.right {
+  float: right;
+}
+
+a {
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.page-link {
+  color: #000;
+}
+
+.hidden {
+  display: none;
+}
+
+.hover {
+  width: 80;
+}
+.pagination {
+  background-color: transparent;
+}
+.shop-btn:hover {
+  height: 42px;
+  width: 110px;
+}
+
+/* Make the image fully responsive */
+.carousel-inner img {
+  background-position: center;
+  object-fit: cover;
+  height: 330px;
+}
+.carousel-control-next {
+  width: 15px;
+  z-index: 0;
+}
+.carousel-control-prev {
+  width: 15px;
+  z-index: 0;
+}
+.carousel-indicators {
+  z-index: 0;
+}
+
+.cart-link {
+  pointer-events: none;
+}
+
+.cart {
+  cursor: pointer;
+}

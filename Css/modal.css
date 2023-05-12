@@ -1,0 +1,131 @@
+#overlay {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#modal {
+  max-width: 550px;
+  height: 580px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  right: 0;
+  z-index: 1;
+
+  /* bottom: 0; */
+}
+/* #show {
+  z-index: 1;
+  position: fixed;
+  top: 600px;
+  left: 1220px;
+} */
+.hidden {
+  display: none;
+}
+
+#overlay {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#login-style {
+  width: 350px;
+  height: 400px;
+  background-color: #eeecec;
+}
+#login-style input::placeholder {
+  color: blue;
+  font-weight: bold;
+}
+
+#register-style {
+  width: 380px;
+  height: 460px;
+  background-color: #eeecec;
+}
+#register-style input::placeholder {
+  color: blue;
+  font-weight: bold;
+}
+#account-overlay {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-control-plaintext {
+  border-bottom: 0.5px solid #000;
+  outline: 0;
+}
+
+.btns {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.btns:hover {
+  border-bottom: 2px solid #03422d;
+  color: #000;
+}
+.actived {
+  /* background-color: rgb(202, 196, 196); */
+  /* background: rgb(236, 236, 236); */
+  border-bottom: 2px solid #37b68c;
+  /* color: #fff; */
+}
+
+#contact-modal {
+  /* height: 380px; */
+  /* width: 900px; */
+  margin: 70px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  right: 0;
+  z-index: 1;
+  /* bottom: 0; */
+}
+textarea {
+  resize: none;
+}
+
+.dash-link:hover {
+  font-size: 15px;
+}
+
+#about-us-modal {
+  height: auto;
+  margin: 70px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  right: 0;
+  z-index: 1;
+  /* bottom: 0; */
+}
