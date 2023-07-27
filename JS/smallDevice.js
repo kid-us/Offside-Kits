@@ -31,7 +31,7 @@ smallSearchInput.addEventListener("keyup", function () {
         document.getElementById("search-items").innerHTML = this.responseText;
       }
     };
-    xhg.open("GET", "/search.php?search=" + smallSearchInput.value, true);
+    xhg.open("GET", "./search.php?search=" + smallSearchInput.value, true);
     xhg.send();
   } else {
     document.getElementById("search-items").innerHTML = "";
