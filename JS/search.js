@@ -8,7 +8,7 @@ searchInput.addEventListener("keyup", function () {
         document.getElementById("search-item").innerHTML = this.responseText;
       }
     };
-    xhg.open("GET", "/search.php?national=" + searchInput.value, true);
+    xhg.open("GET", "./search.php?national=" + searchInput.value, true);
     xhg.send();
   } else {
     document.getElementById("search-item").innerHTML = "";
