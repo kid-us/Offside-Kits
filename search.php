@@ -2,7 +2,7 @@
 
 include("Php/conn.php");
 
-if(isset($_REQUEST['national'])){
+if (isset($_REQUEST['national'])) {
 
     $name = $_REQUEST['national'];
 
@@ -10,133 +10,154 @@ if(isset($_REQUEST['national'])){
     $result = mysqli_query($conn, $sql);
     $count = mysqli_num_rows($result);
 
-        //searching from national table
-    if($count > 0){ //when search is found
-        
-        echo ' <p class="text-success font-weight-bold "> SEARCHED RESULTS</p>';
+    //searching from national table
+    if ($count > 0) { //when search is found
+
+        echo '<p class="text-success fw-semibold fs-5"> Search Results</p>';
         echo '<div id="club-page" class="row text-center mt-5">';
 
-        while($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $name =  $rows['name'];
+        while ($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $name = $rows['name'];
             $price = $rows['price'];
             $image = $rows['image'];
-            
-            echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                    <form action="payment.php" method="POST" class="alert alert-success">
-                        <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                        <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                        <input type="text" name="image" hidden value="'.$image.'">
-            
-                        <div class="shadow-lg bg-light rounded-lg">
-                            <img src="'.$image.'" alt="" width="40%" class="mt-5"/>
-                            <p id="name-1" class="name">'.$name.'</p>  
-                
-                            <span class="p-2 mr-5 text-light bg-info font-weight rounded">'.$price.'$ </span> 
-        
-                            <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-2  rounded-pill" 
-                                        >Shop Now</button>
-                            <br />
-                            <br />
+
+            echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
+                    <form action="payment.php" method="POST">
+                        <input type="text" name="item-name" hidden value="' . $name . '">
+                        <input type="text" name="item-price" hidden value="' . $price . ' $">
+                        <input type="text" name="image" hidden value="' . $image . '">
+                        <div class="shadow-lg bg background">
+                            <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                            <p class="name my-2 small">
+                                ' . $name . '
+                            </p>
+
+                            <div class="row small p-4">
+                                <div class="col-6">
+                                    <p class="fw-semibold rounded">
+                                    ' . $price . '$
+                                    </p>
+                                </div>
+
+                                <div class="col-6">
+                                    <button type="submit" name="shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
-                </div>';
+                </div>'
+            ;
         }
-    }else{ //when search is not find from national table
+    } else { //when search is not find from national table
 
-    $sql = "SELECT * FROM clubs WHERE name LIKE '{$name}%'";
-    $clubResult = mysqli_query($conn, $sql);
-    $clubCount = mysqli_num_rows($clubResult);
+        $sql = "SELECT * FROM clubs WHERE name LIKE '{$name}%'";
+        $clubResult = mysqli_query($conn, $sql);
+        $clubCount = mysqli_num_rows($clubResult);
 
-    //searching from club table
-    if($clubCount > 0){ //when search is found
-        echo ' <p class="text-success">SEARCHED RESULTS</p>';
-        echo '<div id="club-page" class="row text-center mt-5">';
-
-        while($rows = mysqli_fetch_array($clubResult, MYSQLI_ASSOC)){
-            $name =  $rows['name'];
-            $price = $rows['price'];
-            $image = $rows['image'];
-    
-            echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                    <form action="payment.php" method="POST" class="alert alert-success">
-                        <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                        <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                        <input type="text" name="image" hidden value="'.$image.'">
-    
-                        <div class="shadow-lg bg-light rounded-lg">
-                            <img src="'.$image.'" alt="" width="40%" id="ma" class="mt-5"/>
-                            <p id="name-1" class="name">'.$name.'</p>  
-    
-                            <span class="p-2 mr-5 text-light bg-info font-weight rounded">'.$price.'$ </span> 
-        
-                            <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-2  rounded-pill" 
-                                        >Shop Now</button>
-                
-                            <br />
-                            <br />
-                        </div>
-                    </form>
-                </div>';
-        }
-    }else{ //when search is not found in club table
-
-        $sql = "SELECT * FROM boots WHERE name LIKE '{$name}%'";
-        $bootResult = mysqli_query($conn, $sql);
-        $bootCount = mysqli_num_rows($bootResult);
-
-        //searching from boot table
-        if($bootCount > 0){ //when search is found in boot table
-            echo ' <p class="text-success">Searched Results</p>';
+        //searching from club table
+        if ($clubCount > 0) { //when search is found
+            echo '<p class="text-success fw-semibold fs-5"> Search Results</p>';
             echo '<div id="club-page" class="row text-center mt-5">';
 
-            while($rows = mysqli_fetch_array($bootResult, MYSQLI_ASSOC)){
-                $name =  $rows['name'];
+            while ($rows = mysqli_fetch_array($clubResult, MYSQLI_ASSOC)) {
+                $name = $rows['name'];
                 $price = $rows['price'];
                 $image = $rows['image'];
-                
-                echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                        <form action="payment.php" method="POST" class="alert alert-success">
-                            <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                            <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                            <input type="text" name="image" hidden value="'.$image.'">
-        
-                            <div class="shadow-lg bg-light rounded-lg">
-                                <img src="'.$image.'" alt="" width="40%" id="ma" class="mt-5"/>
-                                <p id="name-1" class="name">'.$name.'</p>  
-        
-                                <span id="price-1" class="price pl-1 pr-2 p-1 text-light bg-secondary font-weight-bolder rounded">'.$price.'$ </span> 
-        
-                                
-                                <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-5 mt-2 rounded-pill shop-btn" 
-                                >Shop Now</button>
-                    
-                                <br />
-                                <br />
+
+                echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
+                        <form action="payment.php" method="POST">
+                            <input type="text" name="item-name" hidden value="' . $name . '">
+                            <input type="text" name="item-price" hidden value="' . $price . ' $">
+                            <input type="text" name="image" hidden value="' . $image . '">
+                            <div class="shadow-lg bg background">
+                                <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                                <p class="name my-2 small">
+                                    ' . $name . '
+                                </p>
+
+                                <div class="row small p-4">
+                                    <div class="col-6">
+                                        <p class="fw-semibold rounded">
+                                        ' . $price . '$
+                                        </p>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <button type="submit" name="club-shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
-                    </div>';
+                    </div>'
+                ;
             }
+        } else { //when search is not found in club table
 
-        }else{ //when search is not found in boot table
-             echo ' <p class="text-success">Searched Results</p>';
-                echo ' <div class="row rounded justify-content-center">
+            $sql = "SELECT * FROM boots WHERE name LIKE '{$name}%'";
+            $bootResult = mysqli_query($conn, $sql);
+            $bootCount = mysqli_num_rows($bootResult);
+
+            //searching from boot table
+            if ($bootCount > 0) { //when search is found in boot table
+                echo '<p class="text-success fw-semibold fs-5"> Search Results</p>';
+                echo '<div id="club-page" class="row text-center mt-5">';
+
+                while ($rows = mysqli_fetch_array($bootResult, MYSQLI_ASSOC)) {
+                    $name = $rows['name'];
+                    $price = $rows['price'];
+                    $image = $rows['image'];
+
+                    echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
+                            <form action="payment.php" method="POST">
+                                <input type="text" name="item-name" hidden value="' . $name . '">
+                                <input type="text" name="item-price" hidden value="' . $price . ' $">
+                                <input type="text" name="image" hidden value="' . $image . '">
+                                <div class="shadow-lg bg background">
+                                    <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                                    <p class="name my-2 small">
+                                        ' . $name . '
+                                    </p>
+
+                                    <div class="row small p-4">
+                                        <div class="col-6">
+                                            <p class="fw-semibold rounded">
+                                            ' . $price . '$
+                                            </p>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <button type="submit" name="boot-shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>'
+                    ;
+                }
+
+            } else { //when search is not found in boot table
+                echo ' <p class="text-success fs-5 fw-semibold">Search Results</p>';
+                echo ' <div class="row rounded justify-content-center py-5">
                         <div class="col-lg-12 alert alert-danger text-center">
-                            <img src="/Img/error.png" alt="Item Not Found" width="25%">
-                            <p class="text-danger">Item not Found! Items will be check on VAR</p>
+                            <img src="Img/error.png" alt="Item Not Found" width="25%">
+                            <p class="text-danger">Product not Found! Product will check on VAR</p>
                         </div>
                     ';
 
-        } //end of search is not find message
+            } //end of search is not find message
 
-    } // end of searching in club table
+        } // end of searching in club table
 
-    }//end of searching in national table
+    } //end of searching in national table
 }
 
 
 
 // Small device search
-if(isset($_REQUEST['search'])){
+if (isset($_REQUEST['search'])) {
 
     $name = $_REQUEST['search'];
 
@@ -144,137 +165,156 @@ if(isset($_REQUEST['search'])){
     $result = mysqli_query($conn, $sql);
     $count = mysqli_num_rows($result);
 
-        //searching from national table
-    if($count > 0){ //when search is found
-        
-        echo ' <p class="text-success">Searched Results</p>';
+    //searching from national table
+    if ($count > 0) { //when search is found
+
+        echo '<p class="text-success fw-semibold fs-5">Search Results</p>';
         echo '<div id="club-page" class="row text-center mt-5">';
 
-        while($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $name =  $rows['name'];
+        while ($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $name = $rows['name'];
             $price = $rows['price'];
             $image = $rows['image'];
-            
-            echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                    <form action="payment.php" method="POST" class="alert alert-success">
-                        <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                        <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                        <input type="text" name="image" hidden value="'.$image.'">
-            
-                        <div class="shadow-lg bg-light rounded-lg">
-                            <img src="'.$image.'" alt="" width="40%" id="ma" class="mt-5"/>
-                            <p id="name-1" class="name">'.$name.'</p>  
-                
-                            <span id="price-1" class="price pl-1 pr-2 p-1 text-light bg-secondary font-weight-bolder rounded">'.$price.'$ </span> 
-            
-                                    
-                            <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-5 mt-2 rounded-pill shop-btn" 
-                                        >Shop Now</button>
-                            <br />
-                            <br />
+
+            echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
+                    <form action="payment.php" method="POST">
+                        <input type="text" name="item-name" hidden value="' . $name . '">
+                        <input type="text" name="item-price" hidden value="' . $price . ' $">
+                        <input type="text" name="image" hidden value="' . $image . '">
+                        <div class="shadow-lg bg background">
+                            <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                            <p class="name my-2 small">
+                                ' . $name . '
+                            </p>
+
+                            <div class="row small p-4">
+                                <div class="col-6">
+                                    <p class="fw-semibold rounded">
+                                    ' . $price . '$
+                                    </p>
+                                </div>
+
+                                <div class="col-6">
+                                    <button type="submit" name="shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
-                </div>';
+                </div>'
+            ;
         }
-    }else{ //when search is not find from national table
+    } else { //when search is not find from national table
 
-    $sql = "SELECT * FROM clubs WHERE name LIKE '{$name}%'";
-    $clubResult = mysqli_query($conn, $sql);
-    $clubCount = mysqli_num_rows($clubResult);
+        $sql = "SELECT * FROM clubs WHERE name LIKE '{$name}%'";
+        $clubResult = mysqli_query($conn, $sql);
+        $clubCount = mysqli_num_rows($clubResult);
 
-    //searching from club table
-    if($clubCount > 0){ //when search is found
-        echo ' <p class="text-success">Searched Results</p>';
-        echo '<div id="club-page" class="row text-center mt-5">';
-
-        while($rows = mysqli_fetch_array($clubResult, MYSQLI_ASSOC)){
-            $name =  $rows['name'];
-            $price = $rows['price'];
-            $image = $rows['image'];
-    
-            echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                    <form action="payment.php" method="POST" class="alert alert-success">
-                        <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                        <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                        <input type="text" name="image" hidden value="'.$image.'">
-    
-                        <div class="shadow-lg bg-light rounded-lg">
-                            <img src="'.$image.'" alt="" width="40%" id="ma" class="mt-5"/>
-                            <p id="name-1" class="name">'.$name.'</p>  
-    
-                            <span id="price-1" class="price pl-1 pr-2 p-1 text-light bg-secondary font-weight-bolder rounded">'.$price.'$ </span> 
-    
-                            
-                            <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-5 mt-2 rounded-pill shop-btn" 
-                            >Shop Now</button>
-                
-                            <br />
-                            <br />
-                        </div>
-                    </form>
-                </div>';
-        }
-    }else{ //when search is not found in club table
-
-        $sql = "SELECT * FROM boots WHERE name LIKE '{$name}%'";
-        $bootResult = mysqli_query($conn, $sql);
-        $bootCount = mysqli_num_rows($bootResult);
-
-        //searching from boot table
-        if($bootCount > 0){ //when search is found in boot table
-            echo ' <p class="text-success">Searched Results</p>';
+        //searching from club table
+        if ($clubCount > 0) { //when search is found
+            echo ' <p class="text-success fs-5 fw-semibold">Search Results</p>';
             echo '<div id="club-page" class="row text-center mt-5">';
 
-            while($rows = mysqli_fetch_array($bootResult, MYSQLI_ASSOC)){
-                $name =  $rows['name'];
+            while ($rows = mysqli_fetch_array($clubResult, MYSQLI_ASSOC)) {
+                $name = $rows['name'];
                 $price = $rows['price'];
                 $image = $rows['image'];
-                
-                echo '<div class="col-lg-4 col-sm-12 col-md-6 mb-5">
-                        <form action="payment.php" method="POST" class="alert alert-success">
-                            <input type="text" name="item-name" hidden value ="'.$name.'" readonly >
-                            <input type="text" name="item-price" hidden value="'.$price.'" readonly >
-                            <input type="text" name="image" hidden value="'.$image.'">
-        
-                            <div class="shadow-lg bg-light rounded-lg">
-                                <img src="'.$image.'" alt="" width="40%" id="ma" class="mt-5"/>
-                                <p id="name-1" class="name">'.$name.'</p>  
-        
-                                <span id="price-1" class="price pl-1 pr-2 p-1 text-light bg-secondary font-weight-bolder rounded">'.$price.'$ </span> 
-        
-                                
-                                <button type="submit" name="shop-btn" class="shop-btn btn btn-outline-danger ml-5 mt-2 rounded-pill shop-btn" 
-                                >Shop Now</button>
-                    
-                                <br />
-                                <br />
+
+                echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
+                        <form action="payment.php" method="POST">
+                            <input type="text" name="item-name" hidden value="' . $name . '">
+                            <input type="text" name="item-price" hidden value="' . $price . ' $">
+                            <input type="text" name="image" hidden value="' . $image . '">
+                            <div class="shadow-lg bg background">
+                                <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                                <p class="name my-2 small">
+                                    ' . $name . '
+                                </p>
+
+                                <div class="row small p-4">
+                                    <div class="col-6">
+                                        <p class="fw-semibold rounded">
+                                        ' . $price . '$
+                                        </p>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <button type="submit" name="club-shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
-                    </div>';
+                    </div>'
+                ;
             }
+        } else { //when search is not found in club table
 
-        }else{ //when search is not found in boot table
-             echo ' <p class="text-success">Searched Results</p>';
+            $sql = "SELECT * FROM boots WHERE name LIKE '{$name}%'";
+            $bootResult = mysqli_query($conn, $sql);
+            $bootCount = mysqli_num_rows($bootResult);
+
+            //searching from boot table
+            if ($bootCount > 0) { //when search is found in boot table
+                echo ' <p class="text-success fs-5 fw-semibold">Search Results</p>';
+                echo '<div id="club-page" class="row text-center mt-5">';
+
+                while ($rows = mysqli_fetch_array($bootResult, MYSQLI_ASSOC)) {
+                    $name = $rows['name'];
+                    $price = $rows['price'];
+                    $image = $rows['image'];
+
+                    echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
+                            <form action="payment.php" method="POST">
+                                <input type="text" name="item-name" hidden value="' . $name . '">
+                                <input type="text" name="item-price" hidden value="' . $price . ' $">
+                                <input type="text" name="image" hidden value="' . $image . '">
+                                <div class="shadow-lg bg background">
+                                    <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
+
+                                    <p class="name my-2 small">
+                                        ' . $name . '
+                                    </p>
+
+                                    <div class="row small p-4">
+                                        <div class="col-6">
+                                            <p class="fw-semibold rounded">
+                                            ' . $price . '$
+                                            </p>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <button type="submit" name="boot-shop-btn" class="buy-btn" style="font-size:small;">Buy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>'
+                    ;
+                }
+
+            } else { //when search is not found in boot table
+                echo ' <p class="text-success fs-5 fw-semibold">Search Results</p>';
                 echo ' <div class="row rounded justify-content-center">
                         <div class="col-lg-12 alert alert-danger text-center">
-                            <img src="/Img/error.png" alt="Item Not Found" width="25%">
-                            <p class="text-danger">Item not Found! Items will be check on VAR</p>
+                            <img src="Img/error.png" alt="Item Not Found" width="25%">
+                            <p class="text-danger">Product not Found! Product will check on VAR</p>
                         </div>
                     ';
 
-        } //end of search is not find message
+            } //end of search is not find message
 
-    } // end of searching in club table
+        } // end of searching in club table
 
-    }//end of searching in national table
+    } //end of searching in national table
 }
 // $sr = [];
 // $sql = "SELECT * FROM clubs WHERE name LIKE '{$name}%'";
 // $sql = "SELECT * FROM boots WHERE name LIKE '{$name}%'";
 
 // while($row = mysqli_fetch_array($result)){
-    //     array_push($sr, $row);
-    // }
-    // var_dump($sr);
-    
+//     array_push($sr, $row);
+// }
+// var_dump($sr);
+
 ?>
