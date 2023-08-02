@@ -11,7 +11,6 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/Img/cart-ico.ico" type="image/x-icon">
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- Bootstrap Icon-->
@@ -22,8 +21,7 @@ session_start();
     <link rel="stylesheet" href="Css/modal.css" />
     <!-- Animated scrollbar link -->
     <link rel="stylesheet" href="Css/aos.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="website icon" href="Img/web-logo.png">
     <title>Contact</title>
 </head>
 
@@ -33,14 +31,14 @@ session_start();
 
     <div class="container mb-5 p-5 hero mb-5 bg fw-semibold small">
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-6 col-sm-6 p-5 bg-dark rounded text-light">
+            <div class="col-lg-6 col-md-6 col-sm-6 p-5 shadow-lg rounded fw-semibold">
                 <p class="fs-3 mb-5">Contact Us Via</p>
-                <p class="fs-5">Address</p>
-                <p class="ps-5 text-danger">Nazret, Ethiopia</p>
-                <p class="fs-5">Phone</p>
-                <p class="ps-5 text-danger">+25100000000</p>
-                <p class="fs-5">Email</p>
-                <p class="ps-5 text-danger">Offsidekit@gmail.com</p>
+                <h2>Address</h2>
+                <p class="ps-5 display-5">Nazret, Ethiopia</p>
+                <h2>Phone</h2>
+                <p class="ps-5 display-5">+25100000000</p>
+                <h2>Email</h2>
+                <p class="ps-5 display-5">Offsidekit@gmail.com</p>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 p-5 pl-0">
