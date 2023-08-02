@@ -2,23 +2,42 @@
 
 session_start();
 include("Php/insert.php");
+include("Php/conn.php");
+
 // include ("Php/bootInsert.php");
-if(isset($_SESSION['name'])){
+if (isset($_SESSION['name'])) {
   $admin = $_SESSION['name'];
-  if( time() - $_SESSION['last_login_time'] > 2700){
+  if (time() - $_SESSION['last_login_time'] > 2700) {
     header("Location: adminlog.php");
   }
 }
 
+$result1 = mysqli_query($conn, "SELECT COUNT(*) AS `count` FROM `national`");
+$row1 = mysqli_fetch_assoc($result1);
+$national_count = $row1['count'];
+
+$result2 = mysqli_query($conn, "SELECT COUNT(*) AS `count` FROM `clubs`");
+$row2 = mysqli_fetch_assoc($result2);
+$clubs_count = $row2['count'];
+
+$result3 = mysqli_query($conn, "SELECT COUNT(*) AS `count` FROM `boots`");
+$row3 = mysqli_fetch_assoc($result3);
+$boot_count = $row3['count'];
 
 // if(isset($admin) && time() - )
 
-if(empty($admin)){
+$sql = "SELECT * FROM store";
+$result = mysqli_query($conn, $sql);
+
+$tot = 0;
+while ($revenue = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+  $tot = $tot + $revenue['totalPayed'];
+}
+
+if (empty($admin)) {
   unset($admin);
   header("Location: adminlog.php");
 }
-
-
 
 ?>
 
@@ -26,131 +45,121 @@ if(empty($admin)){
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/Img/admin-ico.ico" type="image/x-icon">
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.css" />
-    <!-- <link rel="stylesheet" href="/Css/modal.css" /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap"
-      rel="stylesheet"
-    />
-    <title>Admin Page</title>
-  </head>
-  <style>
-    body {
-      background-color: rgb(230, 230, 230);
-      font-family: "Grape Nuts", cursive;
-      font-size: larger;
 
-    }
-    .form-control-plaintext {
-      width: 270px;
-      outline: 0;
-      border-bottom: 1px solid #222;
-    }
-    li {
-      list-style: none;
-      display: inline;
-    }
-    .hidden{
-      display: none;
-    }
-  </style>
-  <body>
-    <div class="container">
-      <ul class="mt-3">
-        <li><a href="index.php"><img src="img/logo.png" alt="my shop logo" width="150px"></a></li>
-        <li class="mr-3 font-weight-bold ml-3"> <i class="fa fa-user-o text-danger"></i> <?php echo $admin;?> </li>
-        <li><a href="/Php/adminlogout.php" class="fa fa-power-off"></a></li>
-        
-        <li class="Navs float-right  pr-5"><a href="store.php"><img src="/Img/store.png" alt="store image" width="45px"></a></li>
-      </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Css/modal.css" />
+  <link rel="stylesheet" href="Css/admin.css" />
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icon-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="website icon" href="Img/web-logo.png">
+  <title>Dashboard</title>
+</head>
+<style>
+  body {
+    background-color: rgb(230, 230, 230);
+  }
+</style>
 
-      <p class="text-center font-weight-bold text-danger"><?php echo $invalidMsg;?></p>
-      <p class="text-center font-weight-bold text-success"><?php echo $validMsg;?></p>
+<body>
 
-    <div class="row justify-content-center shadow-lg rounded">
-      <div class="col-sm-12 col-md-12 col-lg-12">
+  <nav class="mb-5 py-4 bg fixed-top">
+    <div class="container fw-semibold">
+      <div class="row">
+        <div class="col-4">
+          <a href="admin.php"><img src="img/logo.png" alt="my shop logo" width="150px"></a>
+        </div>
 
-        <form
-          action="admin.php"
-          method="POST"
-          enctype="multipart/form-data"
-          
-        >
+        <div class="offset-4 col-4">
+          <a href="store.php" class="text-decoration me-5">Store</a>
+          <a href="update.php" class="text-decoration me-5">Update</a>
+          <a href="./Php/adminlogout.php" class="bi bi-box-arrow-right text-decoration"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container hero">
+    <div class="row justify-content-center bg shadow-lg rounded fw-semibold p-5">
+      <p class="text-center text-danger">
+        <?php echo $invalidMsg; ?>
+      </p>
+      <p class="text-center text-success">
+        <?php echo $validMsg; ?>
+      </p>
+
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="col-12 mt-5 p-5 rounded bg-info text-light">
+          <p>Total Revenue
+            <span class="fs-2 text-danger">
+              <?php echo $tot . "$"; ?>
+            </span>
+          </p>
+        </div>
+
+        <div class="col-12 mt-5 p-5 rounded bg-dark text-light">
+          <p>Total National Team Products
+            <span class="fs-2 text-danger">
+              <?php echo $national_count ?>
+            </span>
+          </p>
+        </div>
+
+        <div class="col-12 mt-5 p-5 rounded bg-dark text-light">
+          <p>Total Clubs Team Products
+            <span class="fs-2 text-danger">
+              <?php echo $clubs_count ?>
+            </span>
+          </p>
+        </div>
+
+        <div class="col-12 mt-5 p-5 rounded bg-dark text-light">
+          <p>Total Boots Products
+            <span class="fs-2 text-danger">
+              <?php echo $boot_count ?>
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-12">
+        <form action="admin.php" method="POST" enctype="multipart/form-data" class="small">
           <p class="pt-5">Please select what you are going to upload</p>
-    
-          <input
-            type="radio"
-            name="item"
-            id="national"
-            class="ml-5"
-            value="national"
-            required
-          />
-          National Kit
-    
-          <input
-            type="radio"
-            name="item"
-            id="clubs"
-            class="ml-5 mb-4"
-            required
-            value="clubs"
-          />
-          Clubs Kit
-    
-          <input
-            type="radio"
-            name="item"
-            id="boots"
-            class="ml-5"
-            value="boots"
-            required
-          />
-          Boots <br />
-    
-          <div class="form-inline">
-            <label for="Name" class="font-weight-bold">Name : </label>
-            <input
-              type="text"
-              name="item-name"
-              class="form-control-plaintext ml-2 mb-4"
-              required
-            />
-            <br />
-          </div>
-          <div class="form-inline mb-4">
-            <label for="Price" class="font-weight-bold">Price : </label>
-            <input
-              type="text"
-              name="item-price"
-              class="form-control-plaintext ml-3 mb-4"
-              required
-            />
-            <br />
-          </div>
-    
+          <hr>
+          <input type="radio" name="item" id="national" class="cursor" value="national" required />
+          <span>National Kit</span>
 
-          <span class="small text-dark bg-info p-2 rounded font-weight-bold">Remember Pictures or Photos must be .png type to be Uploaded</span> <br>
+          <input type="radio" name="item" id="clubs" class="cursor ms-5" required value="clubs" />
+          <span class="me-5">Club Kit</span>
 
-          <input type="file" name="file" class="mb-4 mt-3" required /> <br />
-          <button
-            type="submit"
-            name="upload"
-            class="btn btn-warning w-25 mb-5 mt-3"
-          >
+          <input type="radio" name="item" id="boots" class="cursor" value="boots" required />
+          <span>Boot</span>
+          <hr>
+          <p class="my-5 fs-5">Create New Products</p>
+          <label for="Name">Name : </label>
+          <input type="text" name="item-name" class="form-control border border-dark my-3" required />
+          <label for="Price">Price : </label>
+          <input type="number" name="item-price" class="form-control border border-dark my-3" required />
+          <label for="description">Description</label>
+          <textarea name="description" cols="30" rows="4" class="form-control border border-dark my-3"
+            style="resize:none"></textarea>
+          <label for="file">Image</label>
+          <input type="file" name="file" class="form-control border border-dark my-3" required />
+          <p class="small text-dark bg-info p-2 rounded">Remember Pictures or Photos must be <span
+              class="text-danger">.png</span>
+            type to be Uploaded</p>
+          <button type="submit" name="upload" class="btn btn-success w-25 my-3">
             Upload
           </button>
         </form>
       </div>
-    </div>
 
     </div>
     <!-- <script src="JS/adminDescription.js"></script> -->
-  </body>
+</body>
+
 </html>
