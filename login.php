@@ -44,23 +44,20 @@ if (isset($_POST['login'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/Img/log-ico.ico" type="image/x-icon">
-  <!-- <link rel="stylesheet" href="Bootstrap/css/bootstrap.css" /> -->
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <!-- Bootstrap Icon-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
   <link rel="stylesheet" href="Css/style.css" />
   <link rel="stylesheet" href="Css/modal.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="website icon" href="Img/web-logo.png">
+
   <title>Login</title>
 </head>
 
 <body style="background-color: E0E0E0;">
   <div class="container">
-    <div class="row justify-content-center mt-5 p-5 shadow-lg rounded bg-light small fw-semibold">
+    <div class="row justify-content-center mt-5 p-5 shadow-lg rounded bg small fw-semibold">
       <div class="col-lg-6 col-md-6 col-12">
         <form action="login.php" method="POST" class="px-lg-5">
           <p class="fs-2 my-5">Sign Up</p>
