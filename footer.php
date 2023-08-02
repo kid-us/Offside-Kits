@@ -1,20 +1,4 @@
-<?php
-
-// if (isset($_SESSION['feed-msg'])){
-//   echo '<script src="JS/sweetalert2.all.min.js"></script>';
-//   echo "<script>document.addEventListener('DOMContentLoaded', function(e) {Swal.fire({
-//       position: 'center',
-//       title: 'Thank you for the feedback',
-//       color: 'green',
-//       showConfirmButton: false,
-//       timer: 2500,
-//     })
-//   })</script>";
-// }
-// unset($_SESSION['feed-msg']);
-// ?>
-
-<footer class="bg-light pb-3">
+<footer class="footer-bg pb-3 text-light">
   <div class="container pt-5">
     <div class="row small fw-semibold">
       <div class="col-lg-4 col-md-6 col-sm-6 mt-5 ">
@@ -29,16 +13,16 @@
       <div class="col-lg-4 col-md-4 col-sm-3 ps-5">
         <ul class="mt-5 ">
           <li class="list">
-            <a class="text-decoration pb-2" id="about-us" href="#"> About Us</a>
+            <a href="about.php" class="text-decoration"> About Us</a>
           </li>
           <li class="list">
-            <a class="text-decoration" href="#" id="contact-us" class="py-5"> Contact Us</a>
+            <a href="contact.php" class="text-decoration"> Contact Us</a>
           </li>
           <li class="list">
-            <a class="text-decoration" href="#" id="privacy"> Privacy & Policy</a>
+            <a href="#" class="text-decoration"> Privacy & Policy</a>
           </li>
           <li class="list">
-            <a class="text-decoration" href="#" id="term"> Term & Use</a>
+            <a href="#" class="text-decoration"> Term & Use</a>
           </li>
         </ul>
       </div>
