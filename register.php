@@ -65,21 +65,19 @@ if (isset($_POST['register'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/Img/reg-ico.ico" type="image/x-icon">
-  <!-- <link rel="stylesheet" href="Bootstrap/css/bootstrap.css" /> -->
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <!-- Bootstrap Icon-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="Css/modal.css" />
   <link rel="stylesheet" href="Css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet" />
+  <link rel="website icon" href="Img/web-logo.png">
 
   <title>Register</title>
 </head>
 <body">
   <div class="container">
-    <div class="row justify-content-center mt-5 p-5 shadow-lg rounded bg-light small fw-semibold">
+    <div class="row justify-content-center mt-5 p-5 shadow-lg rounded bg small fw-semibold">
       <div class="col-lg-6 col-md d-none d-md-block">
         <img src="Img/undraw_fans_re_cri3.svg" class="img-fluid" alt="">
       </div>
