@@ -20,12 +20,14 @@ if (isset($_REQUEST['national'])) {
             $name = $rows['name'];
             $price = $rows['price'];
             $image = $rows['image'];
+            $description = $rows['description'];
 
             echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
-                    <form action="payment.php" method="POST">
+                    <form action="product-detail.php" method="POST">
                         <input type="text" name="item-name" hidden value="' . $name . '">
-                        <input type="text" name="item-price" hidden value="' . $price . ' $">
+                        <input type="text" name="item-price" hidden value="' . $price . '">
                         <input type="text" name="image" hidden value="' . $image . '">
+                        <input type="text" name="description" hidden value="' . $description . '">
                         <div class="shadow-lg bg background">
                             <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
@@ -64,12 +66,15 @@ if (isset($_REQUEST['national'])) {
                 $name = $rows['name'];
                 $price = $rows['price'];
                 $image = $rows['image'];
+                $description = $rows['description'];
 
                 echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
-                        <form action="payment.php" method="POST">
+                        <form action="product-detail.php" method="POST">
                             <input type="text" name="item-name" hidden value="' . $name . '">
-                            <input type="text" name="item-price" hidden value="' . $price . ' $">
+                            <input type="text" name="item-price" hidden value="' . $price . '">
                             <input type="text" name="image" hidden value="' . $image . '">
+                            <input type="text" name="description" hidden value="' . $description . '">
+
                             <div class="shadow-lg bg background">
                                 <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
@@ -108,12 +113,15 @@ if (isset($_REQUEST['national'])) {
                     $name = $rows['name'];
                     $price = $rows['price'];
                     $image = $rows['image'];
+                    $description = $rows['description'];
 
                     echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-4">
-                            <form action="payment.php" method="POST">
+                            <form action="product-detail.php" method="POST">
                                 <input type="text" name="item-name" hidden value="' . $name . '">
-                                <input type="text" name="item-price" hidden value="' . $price . ' $">
+                                <input type="text" name="item-price" hidden value="' . $price . ' ">
                                 <input type="text" name="image" hidden value="' . $image . '">
+                                <input type="text" name="description" hidden value="' . $description . '">
+                                
                                 <div class="shadow-lg bg background">
                                     <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
@@ -175,12 +183,14 @@ if (isset($_REQUEST['search'])) {
             $name = $rows['name'];
             $price = $rows['price'];
             $image = $rows['image'];
+            $image = $rows['description'];
 
             echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
-                    <form action="payment.php" method="POST">
+                    <form action="product-detail.php" method="POST">
                         <input type="text" name="item-name" hidden value="' . $name . '">
                         <input type="text" name="item-price" hidden value="' . $price . ' $">
                         <input type="text" name="image" hidden value="' . $image . '">
+                        <input type="text" name="description" hidden value="' . $description . '">
                         <div class="shadow-lg bg background">
                             <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
@@ -219,12 +229,14 @@ if (isset($_REQUEST['search'])) {
                 $name = $rows['name'];
                 $price = $rows['price'];
                 $image = $rows['image'];
+                $image = $rows['description'];
 
                 echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
-                        <form action="payment.php" method="POST">
+                        <form action="product-detail.php" method="POST">
                             <input type="text" name="item-name" hidden value="' . $name . '">
                             <input type="text" name="item-price" hidden value="' . $price . ' $">
                             <input type="text" name="image" hidden value="' . $image . '">
+                            <input type="text" name="description" hidden value="' . $description . '">
                             <div class="shadow-lg bg background">
                                 <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
@@ -263,12 +275,14 @@ if (isset($_REQUEST['search'])) {
                     $name = $rows['name'];
                     $price = $rows['price'];
                     $image = $rows['image'];
+                    $image = $rows['description'];
 
                     echo '<div class="col-lg-3 col-md-4 col-6 mb-5 alert alert-success py-3">
-                            <form action="payment.php" method="POST">
+                            <form action="product-detail.php" method="POST">
                                 <input type="text" name="item-name" hidden value="' . $name . '">
                                 <input type="text" name="item-price" hidden value="' . $price . ' $">
                                 <input type="text" name="image" hidden value="' . $image . '">
+                                <input type="text" name="description" hidden value="' . $description . '">
                                 <div class="shadow-lg bg background">
                                     <img src="' . $image . '" alt="' . $name . '" class="mt-2" width="75%" id="ma" />
 
